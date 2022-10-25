@@ -1,0 +1,246 @@
+{
+  "name": "ding",
+  "rules": {
+    "source_file": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "description",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "something"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_newline"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "something"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
+          "type": "PATTERN",
+          "value": "-+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "order_list"
+        }
+      ]
+    },
+    "order_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "order"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_newline"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "order"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "order": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "price",
+          "content": {
+            "type": "SYMBOL",
+            "name": "price"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "product",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "total_quantity",
+          "content": {
+            "type": "SYMBOL",
+            "name": "quantity"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "buyers",
+          "content": {
+            "type": "SYMBOL",
+            "name": "buyer_list"
+          }
+        }
+      ]
+    },
+    "buyer_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "buyer_and_quantity"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_sep"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "buyer_and_quantity"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "buyer_and_quantity": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "buyer_name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "quantity",
+              "content": {
+                "type": "SYMBOL",
+                "name": "quantity"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "price": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "quantity": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "something": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "text": {
+      "type": "PATTERN",
+      "value": "[^*()]+"
+    },
+    "_newline": {
+      "type": "STRING",
+      "value": "\n"
+    },
+    "_sep": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "STRING",
+          "value": "、"
+        }
+      ]
+    }
+  },
+  "extras": [
+    {
+      "type": "STRING",
+      "value": " "
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

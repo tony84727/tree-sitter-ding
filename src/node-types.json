@@ -1,0 +1,196 @@
+[
+  {
+    "type": "buyer_and_quantity",
+    "named": true,
+    "fields": {
+      "buyer_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "text",
+            "named": true
+          }
+        ]
+      },
+      "quantity": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "quantity",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "buyer_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "buyer_and_quantity",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "order",
+    "named": true,
+    "fields": {
+      "buyers": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "buyer_list",
+            "named": true
+          }
+        ]
+      },
+      "price": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "price",
+            "named": true
+          }
+        ]
+      },
+      "product": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "text",
+            "named": true
+          }
+        ]
+      },
+      "total_quantity": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "quantity",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "order_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "order",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "price",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quantity",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {
+      "description": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "something",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "order_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "something",
+    "named": true
+  },
+  {
+    "type": "text",
+    "named": true
+  },
+  {
+    "type": "、",
+    "named": false
+  }
+]
