@@ -8,10 +8,10 @@ module.exports = grammar({
 	),
 	order_list: $ => repeat1($.order),
 	order: $ => seq(
-	    $.price,
+	    field('price', $.price),
 	    field('product', $._product_name),
 	    field('total_quanltity', $.quantity),
-	    $.buyer_list,
+	    field('buyers', $.buyer_list),
 	),
 	buyer_list: $ => seq(
 	    '(',
@@ -25,8 +25,8 @@ module.exports = grammar({
 	    ')',
 	),
 	buyer_and_quantity: $ => seq(
-	    $.something,
-	    optional($.quantity),
+	    field('buyer_name', $.buyer_name),
+	    field('quantity', $.quantity),
 	),
 	price: $ => seq(
 	    '$',
@@ -38,6 +38,7 @@ module.exports = grammar({
 	),
 	something: $ => /.+/,
 	number: $ => /\d+/,
+        buyer_name: $ => /[^*]+/,
 	_product_name: $ => /[^*]+/,
     },
 })

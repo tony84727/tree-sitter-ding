@@ -2,20 +2,27 @@
   {
     "type": "buyer_and_quantity",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "quantity",
-          "named": true
-        },
-        {
-          "type": "something",
-          "named": true
-        }
-      ]
+    "fields": {
+      "buyer_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "buyer_name",
+            "named": true
+          }
+        ]
+      },
+      "quantity": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "quantity",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -34,9 +41,34 @@
     }
   },
   {
+    "type": "buyer_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "order",
     "named": true,
     "fields": {
+      "buyers": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "buyer_list",
+            "named": true
+          }
+        ]
+      },
+      "price": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "price",
+            "named": true
+          }
+        ]
+      },
       "total_quanltity": {
         "multiple": false,
         "required": true,
@@ -47,20 +79,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "buyer_list",
-          "named": true
-        },
-        {
-          "type": "price",
-          "named": true
-        }
-      ]
     }
   },
   {
