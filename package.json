@@ -2,7 +2,7 @@
   "name": "tree-sitter-ding",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bindings/node",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,5 +13,13 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.7"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.ding",
+      "file-types": [
+	"ding"
+      ]
+    }
+  ]
 }

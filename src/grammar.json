@@ -1,0 +1,169 @@
+{
+  "name": "ding",
+  "rules": {
+    "source_file": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "description",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "something"
+            }
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "-+"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "order_list"
+        }
+      ]
+    },
+    "order_list": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "order"
+      }
+    },
+    "order": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "price"
+        },
+        {
+          "type": "FIELD",
+          "name": "product",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_product_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "total_quanltity",
+          "content": {
+            "type": "SYMBOL",
+            "name": "quantity"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "buyer_list"
+        }
+      ]
+    },
+    "buyer_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "buyer_and_quantity"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "buyer_and_quantity"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "buyer_and_quantity": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "something"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "quantity"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "price": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "quantity": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "something": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "_product_name": {
+      "type": "PATTERN",
+      "value": "[^*]+"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+
